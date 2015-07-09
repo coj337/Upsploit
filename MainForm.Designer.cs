@@ -31,6 +31,7 @@ namespace FileUploadTool
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.checkBox01 = new System.Windows.Forms.CheckBox();
             this.checkBox02 = new System.Windows.Forms.CheckBox();
             this.checkBox03 = new System.Windows.Forms.CheckBox();
@@ -231,8 +232,9 @@ namespace FileUploadTool
             this.Controls.Add(this.checkBox02);
             this.Controls.Add(this.checkBox01);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "ManualForm";
+            this.Text = "Upsploit";
             this.Load += new System.EventHandler(this.ManualForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
