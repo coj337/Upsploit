@@ -3,10 +3,10 @@ using System.Text.RegularExpressions;
 
 namespace Upsploit.UploadRequest {
     class RequestPart{
-        internal string contentDisposition { get; }
+		internal string contentDisposition { get; private set;}
         internal string contentType { get; set; }
         internal byte[] data { get; set; }
-        internal string name { get; }
+		internal string name { get; private set;}
         internal byte[] fileName { get; set; }
         
         public RequestPart(string part){

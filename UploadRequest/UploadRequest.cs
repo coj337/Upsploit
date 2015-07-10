@@ -26,8 +26,7 @@ namespace Upsploit.UploadRequest {
             parts = getParts(request);
             url = getUrl(request);
         }
-
-        //TODO: Implement HTTPS support?
+			
         private static string getUrl(string request){
             string host = Regex.Match(request, "(?<=Host: ).*?(?=(\n|\r|\r\n))").Value;
             string path = Regex.Match(request, "/.* ", RegexOptions.Multiline).Value.Trim();
@@ -46,7 +45,7 @@ namespace Upsploit.UploadRequest {
             
             //Add the HTTP headers
             foreach (KeyValuePair<string, string> header in extraHeaders) {
-                request.Headers.Add(header.Key, header.Value); //TODO: Make cookies happen
+                request.Headers.Add(header.Key, header.Value);
             }
 
             //Add the multipart content to an object

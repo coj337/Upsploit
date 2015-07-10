@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 */
 namespace Upsploit.Tests {
     class Test02 : Test {
-        //TODO: Make it validate with more content-types
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             const string data = "<?php\n"
                                    + "  echo phpinfo();\n"
@@ -19,7 +18,6 @@ namespace Upsploit.Tests {
             request.setFileName("Test_2.php");
 
             await request.send();
-
             printResult(request, "Test 2");
         }
 
