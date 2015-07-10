@@ -16,11 +16,12 @@ Usage
 ----- 
 
 Windows:
+
     $ Upsploit
-    or
-    Double-click the executable
+    or double-click the executable
     
 Linux:
-    $./Upsploit
+
+    $ ./Upsploit
     or
-    $mono Upsploit
+	$ mono Upsploit
