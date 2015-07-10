@@ -3,7 +3,7 @@ What is Upsploit?
 
 Upsploit is a cross-platform penetration testing tool for file upload vulnerability identification and exploitation.
 
-File upload vulnerabilities can result in server-side code execution and a complete compromise. These vulnerabilities are plentiful on the web but are hard to test for and even harder to test properly. Upsploit provides a number of tests to give penetration testers and developers the ability to easily validate the security controls implemented against file upload vulnerabilities in their web application.
+File upload vulnerabilities can result in server-side code execution and a complete compromise. These vulnerabilities are plentiful on the web but hard to test for and even harder to test properly. Upsploit provides a number of tests to give penetration testers and developers the ability to easily validate the security controls implemented against file upload vulnerabilities in their web application.
 
 Requirements
 ------------
