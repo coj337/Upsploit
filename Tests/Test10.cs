@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 * Description: This test inserts a colon after the malicious extension and before the allowed one. This will create an alternate data stream for the php file (i.e. an empty php file will be created)
 * It should be possible to create a php file with data in it.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test10 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             const string data = "<?php\n"

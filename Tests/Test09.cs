@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 * Description: This test insert a null byte before the allowed extension but after the forbidden one. 
 * The server should cut off everything after the null byte.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test09 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             //Insert a null byte between the two extensions

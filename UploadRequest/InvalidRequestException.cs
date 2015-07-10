@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FileUploadTool.UploadRequest {
+namespace Upsploit.UploadRequest {
     class InvalidRequestException : Exception{
         public InvalidRequestException() { }
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 * Test #3
 * Description: This test tries to upload different kinds of files that can be used maliciously.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test03 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request){
             //Set the data to HTML (all formats support HTML)

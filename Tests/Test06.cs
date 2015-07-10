@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 * Description: This test tries different combinations of double-extensions.
 * Different double extension tests will work based on certain server configs.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test06 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             const string data = "<?php\n"

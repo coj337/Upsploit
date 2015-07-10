@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace FileUploadTool.UploadRequest {
+namespace Upsploit.UploadRequest {
     class RequestPart{
         internal string contentDisposition { get; }
         internal string contentType { get; set; }

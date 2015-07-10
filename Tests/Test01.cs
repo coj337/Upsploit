@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 * Test #1
 * Description: This test simply uploads a normal PHP file without any attempts to hide it.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test01 : Test{
         internal override async Task runTest(UploadRequest.UploadRequest request){
             const string data = "<?php\n"

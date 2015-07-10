@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using FileUploadTool.Tests;
-using FileUploadTool.UploadRequest;
+using Upsploit.Tests;
+using Upsploit.UploadRequest;
 
-namespace FileUploadTool{
+namespace Upsploit{
     public partial class MainForm : Form{
         List<Test> tests = new List<Test>();
 
@@ -15,7 +15,7 @@ namespace FileUploadTool{
         }
 
         private void ManualForm_Load(object sender, EventArgs e){
-            tests = (List<Test>)getTests<Test>();            
+            tests = getTests();            
 
             Console.SetOut(new TextBoxConsole(txtConsole));
         }
@@ -44,7 +44,7 @@ namespace FileUploadTool{
                                                                 orderby n.Name
                                                                 select n;
                 //Run the tests
-                foreach (CheckBox c in orderedCheckBoxes) {
+                foreach (CheckBox c in orderedCheckBoxes.Cast<CheckBox>()){
                     if (c.Checked) {
                         await tests[i].runTest(request);
                     }
@@ -54,10 +54,10 @@ namespace FileUploadTool{
         }
 
         //Return an object containing an instance of each class derived from the abstract class T
-        private static IEnumerable<T> getTests<T>() where T : class, IComparable<T> {
-            List<T> objects = Assembly.GetAssembly(
-                typeof (T)).GetTypes().Where(myType => myType.IsClass && 
-                !myType.IsAbstract && myType.IsSubclassOf(typeof (T))).Select(type => (T) Activator.CreateInstance(type)).ToList();
+        private static List<Test> getTests(){
+            List<Test> objects = Assembly.GetAssembly(
+                typeof (Test)).GetTypes().Where(myType => myType.IsClass && 
+                !myType.IsAbstract && myType.IsSubclassOf(typeof (Test))).Select(type => (Test) Activator.CreateInstance(type)).ToList();
 
             objects.Sort(); //Objects are sorted so they get stored in the right order
             return objects;

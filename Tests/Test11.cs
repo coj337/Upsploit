@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 * Description: This test inserts a semi-colon after the forbidden extension and before the permitted extension. 
 * The first extension will be taken on IIS <= 6.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test11 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             //A semi-colon is 

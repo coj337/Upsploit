@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace FileUploadTool
+namespace Upsploit
 {
     partial class MainForm
     {

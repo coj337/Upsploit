@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 * Description: This test tries to upload files with randomly cased extensions.
 * This will evade any filters looking for extensions in a single case.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test04 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             string data = "<script>alert(document.cookie)</script>";

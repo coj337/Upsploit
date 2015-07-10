@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 * The uploaded .htaccess file allows jpgs to run as if they were php files.
 * A second file is uploaded as a valid jpg but containing a php script in it's comment.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test08 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request){
             //Send a new .htaccess file. If this is uploaded it will make the server execute jpgs as php files

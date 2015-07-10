@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace FileUploadTool {
+namespace Upsploit {
     public partial class RequestForm : Form {
         public RequestForm() {
             InitializeComponent();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 * Description: This test inserts a mixture of spaces and dots after the filename to avoid filters.
 * The server will generally trim the extra spaces and dots.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test05 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             const string data = "<?php\n"

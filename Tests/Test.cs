@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FileUploadTool.Tests{
+namespace Upsploit.Tests{
     abstract class Test : IComparable<Test>{
         public int CompareTo(Test otherTest) {
             return string.Compare(GetType().Name, otherTest.GetType().Name, StringComparison.Ordinal);

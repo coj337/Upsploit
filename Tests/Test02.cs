@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 * Description: This test looks for MIME-Type validation by uploading a php file with the content type changed.
 ***The changed content-type only effects the upload, the browser/server will still see it as a php file.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test02 : Test {
         //TODO: Make it validate with more content-types
         internal override async Task runTest(UploadRequest.UploadRequest request) {

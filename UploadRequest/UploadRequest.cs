@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace FileUploadTool.UploadRequest {
+namespace Upsploit.UploadRequest {
     class UploadRequest{
         //private string requestBody;
         private readonly string boundary;

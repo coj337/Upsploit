@@ -5,7 +5,7 @@
 * Description: This test uploads a normal jpg with a long name and then a normal jpg containing the first ones 8.3 short-name equivilant.
 * If the server is vulnerable the second file will overwrite the first.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test12 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             //Upload a normal jpg

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 
-namespace FileUploadTool{
+namespace Upsploit{
     public class TextBoxConsole : TextWriter{
         readonly TextBox output = null;
 

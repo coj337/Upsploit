@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace FileUploadTool
+namespace Upsploit
 {
     static class Program
     {

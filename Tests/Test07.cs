@@ -5,7 +5,7 @@
 * Description: This tests uploading valid, malicious jpg (containing php) with different extensions.
 * Only one extension will generally work, varies with server config.
 */
-namespace FileUploadTool.Tests {
+namespace Upsploit.Tests {
     class Test07 : Test {
         internal override async Task runTest(UploadRequest.UploadRequest request){
             byte[] data = getImage();
