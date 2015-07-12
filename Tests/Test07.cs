@@ -7,6 +7,22 @@
 */
 namespace Upsploit.Tests {
     class Test07 : Test {
+        public override sealed string description { get; set; }
+        public override sealed string validation { get; set; }
+
+        public Test07() {
+            description = "This test uploads several files with the MIME type \"image/jpeg\". " +
+                          "The files are \"Test_7.jpg.php\", \"Test_7.php.abc1\" and \"Test_7.php.jpg\"." +
+                          "\r\n" +
+                          "The files uploaded are all valid jpegs with some php code embedded into it's comment data." +
+                          "\r\n\r\n" +
+                          "The test will work on websites that are testing for valid jpegs but not validating extensions properly.";
+
+            validation = "Look for \"Test_7.jpg.php\", \"Test_7.php.abc1\" and \"Test_7.php.jpg\" on the web application. " +
+                         "If any of these pages display the phpinfo, the test was a success and the web application is vulnerable.\r\n\r\n" +
+                         "If all the webpages no longer has the correct extension, it displays an image or it doesn't render in the browser, the test failed.";
+        }
+
         internal override async Task runTest(UploadRequest.UploadRequest request){
             byte[] data = getImage();
 
@@ -15,15 +31,15 @@ namespace Upsploit.Tests {
 
             request.setFileName("Test_7.jpg.php"); //Default extension that will work
             await request.send();
-            printResult(request, "Test 7 (malicious image .jpg.php)");
+            printResult(request, "Test 07 (malicious image .jpg.php)");
 
             request.setFileName("Test_7.php.abc1"); //Will only work in certain conditions
             await request.send();
-            printResult(request, "Test 7 (malicious image .php.abc1)");
+            printResult(request, "Test 07 (malicious image .php.abc1)");
 
             request.setFileName("Test_7.php.jpg"); //Will only work in certain conditions
             await request.send();
-            printResult(request, "Test 7 (malicious image .php.jpg)");
+            printResult(request, "Test 07 (malicious image .php.jpg)");
         }
 
         private static byte[] getImage(){

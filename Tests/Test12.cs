@@ -7,6 +7,22 @@
 */
 namespace Upsploit.Tests {
     class Test12 : Test {
+        public override sealed string description { get; set; }
+        public override sealed string validation { get; set; }
+
+        public Test12() {
+            description = "This test uploads two files with the MIME type \"image/jpeg\". " +
+              "The first file is called \"UniqueLongName.jpg\" and is just a normal image. " +
+              "The second file is called Unique~1.jpg." +
+              "\r\n\r\n" +
+              "The test will work on windows servers vulnerable to the short-name overwrite vulnerability.";
+
+            validation = "Look for UniqueLongName.jpg on the web application. " +
+                         "If only Unique~1.jpg exists, the test was a success and the web application is vulnerable.\r\n\r\n" +
+                         "If UniqueLongName.jpg exists, the test failed";
+
+        }
+
         internal override async Task runTest(UploadRequest.UploadRequest request) {
             //Upload a normal jpg
             byte[] data = getFirstImage();

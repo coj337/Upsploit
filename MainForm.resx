@@ -117,6 +117,119 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="test121.description" xml:space="preserve">
+    <value>This test uploads two files with the MIME type "image/jpeg". The first file is called "UniqueLongName.jpg" and is just a normal image. The second file is called Unique~1.jpg.
+
+The test will work on windows servers vulnerable to the short-name overwrite vulnerability.</value>
+  </data>
+  <data name="test111.description" xml:space="preserve">
+    <value>This test uploads a file (Test_11.php;.jpg) with the MIME type "image/jpeg". The file is a php file with a semi-colon before the extension, this will create the file with just the php extension.
+
+The test will work on servers using IIS &lt;= 6.</value>
+  </data>
+  <data name="test111.validation" xml:space="preserve">
+    <value>Look for Test_11.php on the web application. If the file exists, the test was a success and the web application is vulnerable.
+
+If the file no longer has the correct extension, has both extensions or doesn't render in the browser, the test failed</value>
+  </data>
+  <data name="test101.description" xml:space="preserve">
+    <value>This test uploads a file (Test_10.php:.jpg) with the MIME type "image/jpeg". The file is a php file with a colon before the extension, this will create an alternate data stream for the php file (i.e. an empty php file will be created)
+
+The test will work on servers using a vulnerable NTFS filesystem.</value>
+  </data>
+  <data name="test101.validation" xml:space="preserve">
+    <value>Look for Test_10.php on the web application. If the file exists, the test was a success and the web application is vulnerable.
+
+If the file no longer has the correct extension or displays an image, the test failed</value>
+  </data>
+  <data name="test091.description" xml:space="preserve">
+    <value>This test uploads a file (Test_9.php) with the MIME type "image/jpeg". The file is a php file with a nullbyte before the extension.
+
+The test will work on websites that read strings until a null byte. The server will still upload the file with it's extension.</value>
+  </data>
+  <data name="test091.validation" xml:space="preserve">
+    <value>Look for Test_9.php on the web application. If the file displays the servers phpinfo, the test was a success and the web application is vulnerable.
+
+If the file no longer has the correct extension or displays an image, the test failed.</value>
+  </data>
+  <data name="test081.description" xml:space="preserve">
+    <value>This test uploads two files with the MIME type "image/jpeg". The first file is a .htaccess file intended to overwrite the existing one or write a new one, the second file is a valid jpg that contains php code but the extension is only .jpg. The .htaccess file uploaded will tell the server to run jpgs like php files.
+
+The test will work on websites that allow .htaccess files to be uploaded and overwrite old files (which is default).</value>
+  </data>
+  <data name="test081.validation" xml:space="preserve">
+    <value>Look for Test_8.jpg on the web application. If the file displays the servers phpinfo, the test was a success and the web application is vulnerable.
+
+If the file no longer has the correct extension or displays an image, the test failed.</value>
+  </data>
+  <data name="test071.description" xml:space="preserve">
+    <value>This test uploads several files with the MIME type "image/jpeg". The files are "Test_7.jpg.php", "Test_7.php.abc1" and "Test_7.php.jpg".
+The files uploaded are all valid jpegs with some php code embedded into it's comment data.
+
+The test will work on websites that are testing for valid jpegs but not validating extensions properly.</value>
+  </data>
+  <data name="test071.validation" xml:space="preserve">
+    <value>Look for "Test_7.jpg.php", "Test_7.php.abc1" and "Test_7.php.jpg" on the web application. If any of these pages display the phpinfo, the test was a success and the web application is vulnerable.
+
+If all the webpages no longer has the correct extension, it displays an image or it doesn't render in the browser, the test failed.</value>
+  </data>
+  <data name="test061.description" xml:space="preserve">
+    <value>This test uploads three files with the MIME type "image/jpeg".
+The files uploaded are "Test_6.php.123", "Test_6.jpg.php" and "Test_6.php.jpg".
+
+The files all test different configurations on the server, not all of them will be recognized as php filesby the browser.</value>
+  </data>
+  <data name="test061.validation" xml:space="preserve">
+    <value>Look for "Test_6.php.123", "Test_6.jpg.php" and "Test_6.php.jpg" on the web application. If any of these pages display the phpinfo, the test was a success and the web application is vulnerable.
+
+If the webpage no longer has the correct extension or it doesn't render in the browser, the test failed.</value>
+  </data>
+  <data name="test051.description" xml:space="preserve">
+    <value>This test uploads several files with the MIME type "image/jpeg". The files are "Test_5.php ", "Test_5.php." and "Test_5.php… … . . .. .. ".The server will typically trim extra spaces and/or periods off a filename.
+
+The test will work on websites that are blacklisting extensions in a case-insensitive way.</value>
+  </data>
+  <data name="test051.validation" xml:space="preserve">
+    <value>Look for "Test_5.hTMl", "Test_5.aSp" or "Test_5.pHp" on the web application. If the file loads any of these pages and displays an alert, the test was a success and the web application is vulnerable.
+
+If the webpage no longer has the correct extension or it doesn't render in the browser, the test failed.</value>
+  </data>
+  <data name="test041.description" xml:space="preserve">
+    <value>This test uploads several files with the MIME type "image/jpeg". The files are "Test_4.hTMl", "Test_4.aSp" and "Test_4.pHp".
+
+The test will work on websites that are blacklisting extensions in a case-insensitive way.</value>
+  </data>
+  <data name="test041.validation" xml:space="preserve">
+    <value>Look for "Test_4.hTMl", "Test_4.aSp" and/or "Test_4.pHp" on the web application. If the file loads any of these pages and displays an alert, the test was a success and the web application is vulnerable.
+
+If the webpage no longer has the correct extension or it doesn't render in the browser, the test failed.</value>
+  </data>
+  <data name="test031.description" xml:space="preserve">
+    <value>This test uploads several files, all with the MIME type "image/jpeg" and different extensions. The test uploads Test_3.xxxx where xxxx is the extension (.html, .shtml, .jsp, .asp, .phtml, .php3, .php4 and .php5).
+
+All the uploaded files support HTML and are uploaded with HTML content.
+This test should work if the web application is blacklisting file extensions.</value>
+  </data>
+  <data name="test031.validation" xml:space="preserve">
+    <value>Look for Test_3.xxxx (.html, .shtml, .jsp, .asp, .phtml, .php3, .php4 and .php5) on the web application. If any of the files show an alert box, the test was a success and the web application is vulnerable. The impact can vary based on the files that are allowed. (i.e. XSS vs RCE)
+
+If the webpage no longer has the right extension or it doesn't render in the browser, the test failed.</value>
+  </data>
+  <data name="test021.description" xml:space="preserve">
+    <value>This test uploads a file (Test_2.php) with the MIME type "image/jpeg", by using a MIME type that doesn't match the file, it will evade MIME type validation.
+
+This test will work if there is only MIME type validation.</value>
+  </data>
+  <data name="test021.validation" xml:space="preserve">
+    <value>Look for Test_2.php on the web application. If the file loads the phpinfo, the test was a success and the web application is vulnerable.
+
+If the webpage is no longer a php file or it doesn't render in the browser, the test failed.</value>
+  </data>
+  <data name="test011.validation" xml:space="preserve">
+    <value>Look for Test_1.php on the web application. If the file loads the phpinfo, the test was a success and the web application is vulnerable.
+
+If the webpage is no longer a php file or it doesn't render in the browser, the test failed.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

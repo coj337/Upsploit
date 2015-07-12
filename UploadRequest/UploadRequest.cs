@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Upsploit.UploadRequest {
-    class UploadRequest{
+    public class UploadRequest{
         //private string requestBody;
         private readonly string boundary;
         private readonly string url;
@@ -18,6 +18,7 @@ namespace Upsploit.UploadRequest {
         private readonly List<RequestPart> parts;
         public string response { get; private set; }
         public string reasonPhrase { get; private set; }
+        public int statusCode { get; private set; }
 
         //Constructor splits the request into individual parts.
         internal UploadRequest(string request) {
@@ -53,12 +54,12 @@ namespace Upsploit.UploadRequest {
                 content.Add(createFileContent(new MemoryStream(part.data), part));
             }
             request.Content = content; //Add the multipart data object to the HttpClient
-            
 
             //Get and handle the response
             HttpResponseMessage httpResponse = await client.SendAsync(request);
 
             reasonPhrase = httpResponse.ReasonPhrase;
+            statusCode = (int)httpResponse.StatusCode;
 
             if (httpResponse.Content.Headers.ContentEncoding.ToString() == "gzip"){
                 Stream responseStream = await httpResponse.Content.ReadAsStreamAsync();
@@ -137,20 +138,20 @@ namespace Upsploit.UploadRequest {
             substr = Regex.Replace(substr, "Content-Length.*?(?:\r\n|\r(?!\n)|(?<!\r)\n)", ""); //Removes the content-length line (optional header - new length not known)
 
             if(substr != "")
-                return substr.Split(new[]{"\r\n", "\n"}, StringSplitOptions.RemoveEmptyEntries).ToDictionary(line => Regex.Match(line, "(.*?)(?=: )").Value, line => line.Substring(line.IndexOf(": ") + 2));
+                return substr.Split(new[]{"\r\n", "\n"}, StringSplitOptions.RemoveEmptyEntries).ToDictionary(line => Regex.Match(line, "(.*?)(?=: )").Value, line => line.Substring(line.IndexOf(": ", StringComparison.Ordinal) + 2));
             throw new InvalidRequestException("No extra headers found!");
         }
 
         private List<RequestPart> getParts(string request){
-            int start = request.IndexOf("--" + boundary);
-            int length = request.IndexOf("--" + boundary + "--") - start;
+            int start = request.IndexOf("--" + boundary, StringComparison.Ordinal);
+            int length = request.IndexOf("--" + boundary + "--", StringComparison.Ordinal) - start;
 
             if(start == -1 || length == start*-1-1)
                 throw new InvalidRequestException("No multipart data found!"); //Throw exception if the start or end boundary doesn't exist
 
             string allParts = request.Substring(start, length); //Cut the request down to just the multipart entries
             string[] splitParts = allParts.Split(
-                new string[]{"--" + boundary}, //Delimiter for multipart entries
+                new[]{"--" + boundary}, //Delimiter for multipart entries
                 StringSplitOptions.RemoveEmptyEntries);
 
             return splitParts.Select(part => new RequestPart(part)).ToList();
