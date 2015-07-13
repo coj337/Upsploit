@@ -24,4 +24,14 @@ Linux:
 
     $ ./Upsploit
     or
-	$ mono Upsploit
+    $ mono Upsploit
+
+Compiling
+---------
+
+Open Upsploit.sln in Visual Studio (Windows) or MonoDevelop (Windows, Linux or OSX)
+
+Binaries
+--------
+
+Binaries can be found over in the [releases](https://github.com/coj337/Upsploit/releases/) section
